@@ -3,17 +3,31 @@ import animales.*
 
 program animales {
 	// configuracion de pantalla
-	game.width(15)
-	game.height(15)
+	game.width(10)
+	game.height(10)
 
 	/*
 	 * agregamos personajes
 	 */ 
 	var animalActual = new Vaca()
+	game.addVisual(animalActual)
 
 	/*
 	 * configuraciones de teclado
 	 */
+	keyboard.c().onPressDo({=>animalActual.come(12)})
+	keyboard.p().onPressDo({
+		game.say(animalActual, animalActual.peso().toString())
+	})
+	keyboard.b().onPressDo({animalActual.bebe()})
+	keyboard.s().onPressDO({
+		game.say(animalActual,"vaquita")
+	})
+	keyboard.space().onPressDo{
+		const mensaje = 
+			if (animalActual.sed()){"tengo sed"} else {"no tengo sed"}
+		game.say(animalActual.mensaje)
+	}
 	
 	/*
 	 * arrancamos el juego
